@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:online_cake_shop/constants.dart';
 import 'package:online_cake_shop/models/Product.dart';
 
-
-
 class ItemCard extends StatelessWidget {
   final Product product;
   final Function press;
@@ -18,37 +16,37 @@ class ItemCard extends StatelessWidget {
     return GestureDetector(
       onTap: press,
       child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Expanded(
-          child: Container(
-          padding: EdgeInsets.all(kDefaultPaddin),
-          //For demo we use fixed height and width
-          // height: 100,
-          // width: 160,
-          decoration: BoxDecoration(
-            color: product.color,
-            borderRadius: BorderRadius.circular(16),
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Expanded(
+            child: Container(
+              padding: EdgeInsets.all(kDefaultPaddin),
+              //For demo we use fixed height and width
+              // height: 100,
+              // width: 160,
+              decoration: BoxDecoration(
+                color: product.color,
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: Image.asset(product.image),
+            ),
           ),
-          child: Image.asset(product.image),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: kDefaultPaddin / 4),
+            child: Text(
+              // products is out demo list
+              product.title,
+              style: TextStyle(color: kTextLightColor),
+            ),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: kDefaultPaddin / 4),
-          child: Text(
-            // products is out demo list
-            product.title,
-            style: TextStyle(color: kTextLightColor),
-          ),
-        ),
-        Text(
-          "\$$product price",
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
-        )
-      ],
-    ),
+          Text(
+            "\$${product.price}",
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+          )
+        ],
+      ),
     );
   }
 }
